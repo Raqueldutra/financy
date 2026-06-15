@@ -14,6 +14,9 @@ export const typeDefs = `#graphql
   type Category {
     id: ID!
     name: String!
+    description: String
+    icon: String!
+    color: String!
     createdAt: String!
     updatedAt: String!
   }
@@ -43,9 +46,10 @@ export const typeDefs = `#graphql
   type Mutation {
     register(name: String!, email: String!, password: String!): AuthPayload!
     login(email: String!, password: String!): AuthPayload!
+    updateUser(name: String!): User!
 
-    createCategory(name: String!): Category!
-    updateCategory(id: ID!, name: String!): Category!
+    createCategory(name: String!, description: String, icon: String, color: String): Category!
+    updateCategory(id: ID!, name: String, description: String, icon: String, color: String): Category!
     deleteCategory(id: ID!): Boolean!
 
     createTransaction(

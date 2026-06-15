@@ -21,6 +21,9 @@ model User {
 model Category {
   id           String        @id @default(cuid())
   name         String
+  description  String?
+  icon         String        @default("tag")
+  color        String        @default("#16A34A")
   userId       String
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime      @default(now())

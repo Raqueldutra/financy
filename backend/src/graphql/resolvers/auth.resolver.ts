@@ -44,5 +44,12 @@ export const authResolver = {
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '7d' })
       return { token, user }
     },
+
+    updateUser: async (_: unknown, { name }: { name: string }, { userId }: Context) => {
+      const id = requireAuth(userId)
+      const user = await prisma.user.findUnique({ where: { id } })
+      if (!user) throw new GraphQLError('User not found', { extensions: { code: 'NOT_FOUND' } })
+      return prisma.user.update({ where: { id }, data: { name } })
+    },
   },
 }
