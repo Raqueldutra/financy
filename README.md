@@ -41,7 +41,7 @@ npm run dev
 
 O servidor estará disponível em: `http://localhost:4000/graphql`
 
-## Instalação e execução backend
+## Instalação e execução frontend
 
 ```bash
 # Instalar dependências
